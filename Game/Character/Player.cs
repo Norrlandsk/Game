@@ -54,7 +54,7 @@ namespace Game.Character
             
             
             Random randomAttack = new Random();
-            int randomizedAttack = randomAttack.Next();
+            int randomizedAttack = randomAttack.Next(1,11);
 
             randomizedAttack += attackDamage;
             return attackDamage;

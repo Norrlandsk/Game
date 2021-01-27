@@ -11,13 +11,17 @@ namespace Game.Setup
     class Setup
     {
 
-       public static bool isRunning = true;
-        
-        
+        public static bool isRunning = true;
+        public static Random random = new Random();
+
+
+        public static List<IEnemy> enemyList = new List<IEnemy>();
+
+
 
         public void PrintMainMenu()
         {
-           
+
             while (isRunning)
             {
                 Console.WriteLine("[1] Try to awaken");
@@ -31,7 +35,7 @@ namespace Game.Setup
                 {
                     case 1:
                         Battle.Roam();
-                       
+
                         break;
                     case 2:
                         Player.ShowInfo(Battle.player);
@@ -41,7 +45,7 @@ namespace Game.Setup
                         break;
                     case 4:
                         GiveUp();
-                        
+
                         break;
                 }
 
@@ -96,16 +100,30 @@ namespace Game.Setup
             return confirmedChoice;
         }
 
-        public static List<IEnemy> SetupEnemyList()
+        public static List<IEnemy> SetupEnemyList(Player player)
         {
+            if (player.Level >= 1)
+            {
+                ScreamingShadow screamingShadow = new ScreamingShadow();
+                ManWithoutFace manWithoutFace = new ManWithoutFace();
+                enemyList.Add(screamingShadow);
+                enemyList.Add(manWithoutFace);
+            }
 
-            List<IEnemy> enemyList = new List<IEnemy>();
-            ScreamingShadow screamingShadow = new ScreamingShadow();
-            ManWithoutFace manWithoutFace = new ManWithoutFace();
-            enemyList.Add(screamingShadow);
-            enemyList.Add(manWithoutFace);
+            if (player.Level >= 2)
+            {
+                AManWithAHorseFace aManWithAHorseFace = new AManWithAHorseFace();
+                GrinningToothlessHag grinningToothlessHag = new GrinningToothlessHag();
+                enemyList.Add(grinningToothlessHag);
+                enemyList.Add(aManWithAHorseFace);
+            }
 
-            return enemyList;
+            if (player.Level >= 3)
+            {
+                ANameLessHorror aNameLessHorror = new ANameLessHorror();
+                enemyList.Add(aNameLessHorror);
+            }
+                return enemyList;
         }
 
 

@@ -4,19 +4,19 @@ using System.Text;
 
 namespace Game.Character.Enemy.Enemies
 {
-    class ScreamingShadow : Enemy
+    class ANameLessHorror : Enemy
     {
 
         //Constructor
-        public ScreamingShadow()
+        public ANameLessHorror()
         {
-            base.Name = "screaming shadow";
-            base.Level = 1;
+            base.Name = "nameless horror";
+            base.Level = 3;
 
-            base.Xp = 10;
-            base.Hp = 10;
-            base.Energy = 10;
-            base.Attack = 1;
+            base.Xp = 20;
+            base.Hp = 20;
+            base.Energy = 20;
+            base.Attack = 5;
             base.Dead = false;
         }
 

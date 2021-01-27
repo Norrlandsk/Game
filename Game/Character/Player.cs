@@ -9,7 +9,7 @@ namespace Game.Character
 {
     public class Player
     {
-        Random randomAttack = new Random();
+
 
 
         private string name;
@@ -17,8 +17,10 @@ namespace Game.Character
 
         private int xp = 0;
         private int hp = 100;
+        private int maxHp = 100;
         private int energy = 0;
         private int attack = 1;
+        private int xpUntilNextLevel = 10;
 
         private int hearing = 0;
         private int vision = 0;
@@ -39,8 +41,10 @@ namespace Game.Character
 
         public int Xp { get => xp; set => xp = value; }
         public int Hp { get => hp; set => hp = value; }
+        public int MaxHp { get => maxHp; set => maxHp = value; }
         public int Energy { get => energy; set => energy = value; }
         public int Attack { get => attack; set => attack = value; }
+        public int XpUntilNextLevel { get => xpUntilNextLevel; set => xpUntilNextLevel = value; }
 
         public int Hearing { get => hearing; set => hearing = value; }
         public int Vision { get => vision; set => vision = value; }
@@ -58,7 +62,7 @@ namespace Game.Character
             attackDamage += Vision;
 
 
-            int randomizedAttack = randomAttack.Next(0, 3);
+            int randomizedAttack = Setup.Setup.random.Next(0, 20);
 
 
             attackDamage *= randomizedAttack;
@@ -96,7 +100,7 @@ namespace Game.Character
 
         }
 
-        
+
 
         public static void ShowInfo(Player player)
         {
@@ -109,14 +113,14 @@ namespace Game.Character
             {
                 Console.WriteLine("You are deathe");
             }
-            else { Console.WriteLine($"Hearing: {player.Hearing}");}
+            else { Console.WriteLine($"Hearing: {player.Hearing}"); }
 
-            if (player.Vision==0)
+            if (player.Vision == 0)
             {
                 Console.WriteLine("You are blind");
             }
-            else { Console.WriteLine($"Vision: {player.Vision}");}
-            
+            else { Console.WriteLine($"Vision: {player.Vision}"); }
+
             if (player.Taste == false)
             {
                 Console.WriteLine("You have no sense of taste");
@@ -132,5 +136,12 @@ namespace Game.Character
             }
         }
 
+        public void CheckXP()
+        {
+            if (xp >= xpUntilNextLevel)
+            {
+                Mechanics.Level.LevelUp(Battle.player);
+            }
+        }
     }
 }

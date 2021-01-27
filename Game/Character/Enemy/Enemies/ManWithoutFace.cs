@@ -18,7 +18,7 @@ namespace Game.Character.Enemy.Enemies
             base.Level = 1;
 
             base.Xp = 10;
-            base.Hp = 100;
+            base.Hp = 10;
             base.Energy = 10;
             base.Attack = 1;
             base.Dead = false;
@@ -37,7 +37,7 @@ namespace Game.Character.Enemy.Enemies
         { return base.GetHP(); }
 
         public override int GetXP()
-        { return base.GetHP(); }
+        { return base.GetXP(); }
 
         public override int GetEnergy()
         { return base.GetEnergy(); }

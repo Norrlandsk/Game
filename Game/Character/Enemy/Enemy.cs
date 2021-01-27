@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Game.Mechanics;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,7 +7,7 @@ namespace Game.Character.Enemy
 {
     abstract class Enemy : IEnemy
     {
-        Random randomAttack = new Random();
+        
 
 
         private string name;
@@ -60,9 +61,13 @@ namespace Game.Character.Enemy
             int attackDamage = 0;
             attackDamage += Attack;
 
+            if (Battle.player.Hearing > 0)
+            {
+
+            }
 
             
-            int randomAttackDamage = randomAttack.Next(0, 3);
+            int randomAttackDamage = Setup.Setup.random.Next(0, 3);
 
             attackDamage *= randomAttackDamage;
 

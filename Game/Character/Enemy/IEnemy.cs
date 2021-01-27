@@ -18,7 +18,7 @@ namespace Game.Character.Enemy
         public int GetXP();
         public int GetEnergy();
         public void Message();
-        public int EnemyAttack(int attack);
+        public int EnemyAttack();
         public void TakeDamage(int dmg);
         public bool IsDead();
 

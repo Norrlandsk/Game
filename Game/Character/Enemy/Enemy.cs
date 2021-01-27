@@ -6,6 +6,9 @@ namespace Game.Character.Enemy
 {
     abstract class Enemy : IEnemy
     {
+        Random randomAttack = new Random();
+
+
         private string name;
         private int level;
 
@@ -51,17 +54,17 @@ namespace Game.Character.Enemy
             Console.Write($"In the void, suddenly you come upon ");
         }
 
-        public virtual int EnemyAttack(int attack)
+        public virtual int EnemyAttack()
         {
 
-            int attackDamage = 1;
-            attack *= attackDamage;
+            int attackDamage = 0;
+            attackDamage += Attack;
 
 
-            Random randomAttack = new Random();
+            
             int randomAttackDamage = randomAttack.Next(0, 3);
 
-            randomAttackDamage *= attackDamage;
+            attackDamage *= randomAttackDamage;
 
             return attackDamage;
         }

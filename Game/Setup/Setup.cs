@@ -11,7 +11,7 @@ namespace Game.Setup
     class Setup
     {
 
-        bool isRunning = true;
+       public static bool isRunning = true;
         
         
 
@@ -34,7 +34,7 @@ namespace Game.Setup
                        
                         break;
                     case 2:
-                        Level.ShowInfo();
+                        Player.ShowInfo(Battle.player);
                         break;
                     case 3:
                         Level.Upgrade();

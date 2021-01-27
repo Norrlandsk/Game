@@ -6,10 +6,7 @@ namespace Game.Mechanics
 {
     class Level
     {
-        public static void ShowInfo()
-        {
-            Console.WriteLine("Info");
-        }
+        
 
         public static void Upgrade()
         {

@@ -16,7 +16,7 @@ namespace Game.Character.Enemy.Enemies
             base.Xp = 10;
             base.Hp = 100;
             base.Energy = 10;
-            base.Attack = 10;
+            base.Attack = 1;
             base.Dead = false;
         }
 
@@ -45,9 +45,9 @@ namespace Game.Character.Enemy.Enemies
             Console.Write(base.GetName());
         }
 
-        public override int EnemyAttack(int attack)
+        public override int EnemyAttack()
         {
-            return base.EnemyAttack(attack);
+            return base.EnemyAttack();
         }
 
         public override void TakeDamage(int dmg)

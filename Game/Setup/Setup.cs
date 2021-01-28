@@ -14,7 +14,7 @@ namespace Game.Setup
 
         public static bool isRunning = true;
         public static Random random = new Random();
-
+        public static SaveGame saveGame = new SaveGame();
 
         public static List<IEnemy> enemyList = new List<IEnemy>();
 
@@ -90,7 +90,7 @@ namespace Game.Setup
                     Console.Write("[5] Give up and accept your fate "); Design.Color.FontColor("~[Quitters never win (and quitters never wake up from this nightmare)]~\n");
 
 
-                    int userChoice = ConfirmCorrectInput(4);
+                    int userChoice = ConfirmCorrectInput(5);
 
                     switch (userChoice)
                     {
@@ -127,6 +127,7 @@ namespace Game.Setup
             string choice = Console.ReadLine();
             if (choice.ToUpper() == "Y")
             {
+                Console.WriteLine("Alas! You have chosen to forever roam this Void!");
                 isRunning = false;
             }
         }

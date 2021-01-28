@@ -21,12 +21,12 @@ namespace Game.Character
         private int energy = 0;
         private int attack = 1;
         private int xpUntilNextLevel = 10;
-        private int vial=10;
+        private int vial = 10;
 
-        private int hearing = 0;
-        private int vision = 0;
-        private bool taste = false;
-        private bool smell = false;
+        private int hearing = 1;
+        private int vision = 1;
+        private bool taste = true;
+        private bool smell = true;
 
         private bool dead = false;
         private bool awake = false;
@@ -113,15 +113,15 @@ namespace Game.Character
             Console.WriteLine($"Energy: {player.Energy}");
             if (player.Hearing == 0)
             {
-                Console.WriteLine("You are deathe");
+                Console.WriteLine("You are deaf");
             }
-            else { Console.WriteLine($"Hearing: {player.Hearing}"); }
+            else { Console.WriteLine($"Hearing level: {player.Hearing}"); }
 
             if (player.Vision == 0)
             {
                 Console.WriteLine("You are blind");
             }
-            else { Console.WriteLine($"Vision: {player.Vision}"); }
+            else { Console.WriteLine($"Vision level: {player.Vision}"); }
 
             if (player.Taste == false)
             {
@@ -145,5 +145,12 @@ namespace Game.Character
                 Mechanics.Level.LevelUp(Battle.player);
             }
         }
+
+        public void LoadGame()
+        {
+            Battle.player.Name = SaveGame.
+        }
+
+
     }
 }

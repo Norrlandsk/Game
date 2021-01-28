@@ -78,9 +78,25 @@ namespace Game.Mechanics
 
                 if (player.IsDead())
                 {
+
                     Console.WriteLine("You have died in this nightmare and are forever bound to roam the Void!");
+                    Console.WriteLine("Would you like to restart from your last save point (y), or accept your fate (n)? (y/n)");
+
+                    
+                    string choice = Console.ReadLine();
+                    if (choice.ToUpper() == "Y")
+                    {
+                        player.LoadGame();
+                    }
+
+                    else if (choice.ToUpper() == "N")
+                    {
                     Setup.Setup.isRunning = false;
-                    break;
+
+                    }
+
+
+                    
                 }
 
                 Console.WriteLine($"Your HP is now {player.Hp}");

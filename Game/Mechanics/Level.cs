@@ -29,6 +29,9 @@ namespace Game.Mechanics
                         "It is mostly a reverberating, undulating howl, haunting in its flatness yet majestic in its unfathomable scale. At least it is something.  \n" +
                         "~[You have acquired the sense of hearing]~" +
                         "~[You have acquired the ability to meditate in order better yourself by spending Energy acquired from defeated enemies]~");
+
+                    
+
                     player.XpUntilNextLevel = 40;
                     break;
                 case 4:
@@ -37,6 +40,8 @@ namespace Game.Mechanics
                 case 5:
                     player.Vision += 1;
                     Console.WriteLine("Up until now");
+                    
+
                     player.XpUntilNextLevel = 80;
                     break;
                 case 6:
@@ -44,6 +49,8 @@ namespace Game.Mechanics
                     break;
                 case 7:
                     player.Taste = true;
+
+                    
                     player.XpUntilNextLevel = 1500;
                     break;
                 case 8:

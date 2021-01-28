@@ -13,7 +13,7 @@ namespace Game.Character
 
 
         private string name;
-        private int level = 1;
+        private int level = 7;
 
         private int xp = 0;
         private int hp = 100;
@@ -21,6 +21,7 @@ namespace Game.Character
         private int energy = 0;
         private int attack = 1;
         private int xpUntilNextLevel = 10;
+        private int vial=10;
 
         private int hearing = 0;
         private int vision = 0;
@@ -45,6 +46,7 @@ namespace Game.Character
         public int Energy { get => energy; set => energy = value; }
         public int Attack { get => attack; set => attack = value; }
         public int XpUntilNextLevel { get => xpUntilNextLevel; set => xpUntilNextLevel = value; }
+        public int Vial { get => vial; set => vial = value; }
 
         public int Hearing { get => hearing; set => hearing = value; }
         public int Vision { get => vision; set => vision = value; }

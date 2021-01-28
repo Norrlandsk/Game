@@ -52,7 +52,20 @@ namespace Game.Mechanics
                     player.RecieveXP(enemy.GetXP());
                     player.RecieveEnergy(enemy.GetEnergy());
                     Console.WriteLine($"The {enemy.GetName()} was defeated! You recieve {enemy.GetXP()} XP and {enemy.GetEnergy()} Energy Points!");
+                    int getVial=Setup.Setup.random.Next(1, 11);
+                    if (getVial >5)
+                    {
+                        player.Vial += 1;
+                        if (player.Level < 7)
+                        {
+                            Console.WriteLine($"The {enemy.GetName()} dropped a vial with some form of liquid. If only your tastebuds were not totally numb, maybe you would dare taste it, might be useful...");
+                        }
+                        else
+                        {
+                            Console.WriteLine($"The {enemy.GetName()} dropped a vial with some form of liquid. You might want to taste it, might do you some good...");
+                        }
 
+                    }
                     Console.WriteLine($"Your XP is now {player.Xp} and your Energy is {player.Energy}");
                     player.CheckXP();
                     Setup.Setup.enemyList.Clear();

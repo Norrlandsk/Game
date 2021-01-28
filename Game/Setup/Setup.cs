@@ -1,6 +1,7 @@
 ﻿using Game.Character;
 using Game.Character.Enemy;
 using Game.Character.Enemy.Enemies;
+using Game.Design;
 using Game.Mechanics;
 using System;
 using System.Collections.Generic;
@@ -19,35 +20,104 @@ namespace Game.Setup
 
 
 
-        public void PrintMainMenu()
+        public void PrintMainMenu(Player player)
         {
 
             while (isRunning)
             {
-                Console.WriteLine("[1] Try to awaken");
-                Console.WriteLine("[2] Contemplate about situation");
-                Console.WriteLine("[3] Meditate on ways to solve all this");
-                Console.WriteLine("[4] Give up and accept your fate");
 
-                int userChoice = ConfirmCorrectInput(4);
-
-                switch (userChoice)
+                if (player.Level < 3)
                 {
-                    case 1:
-                        Battle.Roam();
+                    Console.Write($"[1] Try to awaken "); Design.Color.FontColor("~[Fight your way through this nightmare]~\n");
+                    Console.Write("[2] Hold up for a second to get your bearings "); Design.Color.FontColor("~[Get the deets about your predicament]~\n");
+                    Console.Write("[3] Give up and accept your fate "); Design.Color.FontColor("~[Quitters never win (and quitters never wake up from this nightmare)]~\n");
 
-                        break;
-                    case 2:
-                        Player.ShowInfo(Battle.player);
-                        break;
-                    case 3:
-                        Level.Upgrade();
-                        break;
-                    case 4:
-                        GiveUp();
+                    int userChoice = ConfirmCorrectInput(3);
 
-                        break;
+                    switch (userChoice)
+                    {
+                        case 1:
+                            Battle.Roam();
+                            break;
+                        case 2:
+                            Player.ShowInfo(Battle.player);
+                            break;
+                        case 3:
+                            GiveUp();
+                            break;
+
+                    }
                 }
+
+
+
+
+                else if (player.Level < 7)
+                {
+                    Console.Write($"[1] Try to awaken "); Design.Color.FontColor("~[Fight your way through this nightmare]~\n");
+                    Console.Write("[2] Hold up for a second to get your bearings "); Design.Color.FontColor("~[Get the deets about your predicament]~\n");
+                    Console.Write("[3] Meditate on ways to solve all this"); Design.Color.FontColor("~[Better yourself by spending Energy acquired from defeated enemies]~");
+                    Console.Write("[4] Give up and accept your fate "); Design.Color.FontColor("~[Quitters never win (and quitters never wake up from this nightmare)]~\n");
+
+
+                    int userChoice = ConfirmCorrectInput(4);
+
+                    switch (userChoice)
+                    {
+                        case 1:
+                            Battle.Roam();
+
+                            break;
+                        case 2:
+                            Player.ShowInfo(Battle.player);
+                            break;
+                        case 3:
+                            Level.Upgrade(Battle.player);
+                            break;
+                        case 4:
+                            GiveUp();
+
+                            break;
+                    }
+                }
+
+                else if (player.Level > 6)
+                {
+                    Console.Write("[1] Try to awaken "); Design.Color.FontColor("~[Fight your way through this nightmare]~\n");
+                    Console.Write("[2] Hold up for a second to get your bearings "); Design.Color.FontColor("~[Get the deets about your predicament]~\n");
+                    Console.Write("[3] Meditate on ways to solve all this"); Design.Color.FontColor("~[Better yourself by spending Energy acquired from defeated enemies]~");
+                    Console.Write("[4] Try the content of a vial"); Design.Color.FontColor("~[They have to be good for something, right?]~");
+                    Console.Write("[5] Give up and accept your fate "); Design.Color.FontColor("~[Quitters never win (and quitters never wake up from this nightmare)]~\n");
+
+
+                    int userChoice = ConfirmCorrectInput(4);
+
+                    switch (userChoice)
+                    {
+                        case 1:
+                            Battle.Roam();
+
+                            break;
+                        case 2:
+                            Player.ShowInfo(Battle.player);
+                            break;
+                        case 3:
+                            Level.Upgrade(Battle.player);
+                            break;
+                        case 4:
+                            Level.TryVial(Battle.player);
+                            break;
+                        case 5:
+                            GiveUp();
+                            break;
+                    }
+                }
+
+
+
+
+
+
 
             }
         }
@@ -120,12 +190,44 @@ namespace Game.Setup
 
             if (player.Level >= 3)
             {
+                AbominableCreature abominableCreature = new AbominableCreature();
                 ANameLessHorror aNameLessHorror = new ANameLessHorror();
                 enemyList.Add(aNameLessHorror);
+                enemyList.Add(abominableCreature);
             }
-                return enemyList;
+
+            if (player.Level >= 4)
+            {
+                MaliciousGhost maliciousGhost = new MaliciousGhost();
+                enemyList.Add(maliciousGhost);
+            }
+            if (player.Level >= 5)
+            {
+                MaliciousGhost maliciousGhost = new MaliciousGhost();
+                enemyList.Add(maliciousGhost);
+            }
+            if (player.Level >= 6)
+            {
+                MaliciousGhost maliciousGhost = new MaliciousGhost();
+                enemyList.Add(maliciousGhost);
+            }
+            if (player.Level >= 7)
+            {
+                MaliciousGhost maliciousGhost = new MaliciousGhost();
+                enemyList.Add(maliciousGhost);
+            }
+            if (player.Level >= 8)
+            {
+                MaliciousGhost maliciousGhost = new MaliciousGhost();
+                enemyList.Add(maliciousGhost);
+            }
+            if (player.Level >= 9)
+            {
+                MaliciousGhost maliciousGhost = new MaliciousGhost();
+                enemyList.Add(maliciousGhost);
+            }
+
+            return enemyList;
         }
-
-
     }
 }

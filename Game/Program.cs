@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Game.Character;
+using Game.Mechanics;
+using System;
 
 namespace Game
 {
@@ -6,9 +8,9 @@ namespace Game
     {
         static void Main(string[] args)
         {
-
+            
             Setup.Setup newGame = new Setup.Setup();
-            newGame.PrintMainMenu();
+            newGame.PrintMainMenu(Battle.player);
         }
     }
 }

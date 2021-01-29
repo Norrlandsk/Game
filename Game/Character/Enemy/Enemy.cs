@@ -66,8 +66,8 @@ namespace Game.Character.Enemy
 
             }
 
-            
-            int randomAttackDamage = Setup.Setup.random.Next(0, 3);
+            //Tweaka
+            int randomAttackDamage = Setup.Setup.random.Next(2, 3);
 
             attackDamage *= randomAttackDamage;
 

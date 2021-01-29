@@ -14,7 +14,8 @@ namespace Game.Setup
 
         public static bool isRunning = true;
         public static Random random = new Random();
-        public static SaveGame saveGame = new SaveGame();
+        public static List<SaveGame> listOfSavedGames = new List<SaveGame>();
+        
 
         public static List<IEnemy> enemyList = new List<IEnemy>();
 
@@ -22,7 +23,8 @@ namespace Game.Setup
 
         public void PrintMainMenu(Player player)
         {
-
+           
+         
             while (isRunning)
             {
 
@@ -32,7 +34,7 @@ namespace Game.Setup
                     Console.Write("[2] Hold up for a second to get your bearings "); Design.Color.FontColor("~[Get the deets about your predicament]~\n");
                     Console.Write("[3] Give up and accept your fate "); Design.Color.FontColor("~[Quitters never win (and quitters never wake up from this nightmare)]~\n");
 
-                    int userChoice = ConfirmCorrectInput(3);
+                    int userChoice = ConfirmCorrectInput(4);
 
                     switch (userChoice)
                     {
@@ -44,6 +46,9 @@ namespace Game.Setup
                             break;
                         case 3:
                             GiveUp();
+                            break;
+                        case 4:
+                            player.Plus();
                             break;
 
                     }
@@ -60,7 +65,7 @@ namespace Game.Setup
                     Console.Write("[4] Give up and accept your fate "); Design.Color.FontColor("~[Quitters never win (and quitters never wake up from this nightmare)]~\n");
 
 
-                    int userChoice = ConfirmCorrectInput(4);
+                    int userChoice = ConfirmCorrectInput(5);
 
                     switch (userChoice)
                     {
@@ -78,6 +83,9 @@ namespace Game.Setup
                             GiveUp();
 
                             break;
+                        case 5:
+                            player.Plus();
+                            break;
                     }
                 }
 
@@ -90,7 +98,7 @@ namespace Game.Setup
                     Console.Write("[5] Give up and accept your fate "); Design.Color.FontColor("~[Quitters never win (and quitters never wake up from this nightmare)]~\n");
 
 
-                    int userChoice = ConfirmCorrectInput(5);
+                    int userChoice = ConfirmCorrectInput(6);
 
                     switch (userChoice)
                     {
@@ -109,6 +117,9 @@ namespace Game.Setup
                             break;
                         case 5:
                             GiveUp();
+                            break;
+                        case 6:
+                            player.Plus();
                             break;
                     }
                 }

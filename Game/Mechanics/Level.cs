@@ -30,9 +30,9 @@ namespace Game.Mechanics
                         "~[You have acquired the sense of hearing]~" +
                         "~[You have acquired the ability to meditate in order better yourself by spending Energy acquired from defeated enemies]~");
 
-                    
 
                     player.XpUntilNextLevel = 40;
+                    Setup.Setup.listOfSavedGames.Add(new SaveGame(player));
                     break;
                 case 4:
                     player.XpUntilNextLevel = 60;
@@ -40,21 +40,21 @@ namespace Game.Mechanics
                 case 5:
                     player.Vision += 1;
                     Console.WriteLine("Up until now");
-                    
 
                     player.XpUntilNextLevel = 80;
+                    Setup.Setup.listOfSavedGames.Add(new SaveGame(player));
                     break;
                 case 6:
-                    player.XpUntilNextLevel = 900;
+                    player.XpUntilNextLevel = 90;
                     break;
                 case 7:
                     player.Taste = true;
 
-                    
-                    player.XpUntilNextLevel = 1500;
+                    player.XpUntilNextLevel = 110;
+                    Setup.Setup.listOfSavedGames.Add(new SaveGame(player));
                     break;
                 case 8:
-                    player.XpUntilNextLevel = 2000;
+                    player.XpUntilNextLevel = 140;
                     break;
                 case 9:
                     player.Smell = true;

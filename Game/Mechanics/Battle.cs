@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using Game.Setup;
 
 namespace Game.Mechanics
 {
@@ -67,7 +68,13 @@ namespace Game.Mechanics
 
                     }
                     Console.WriteLine($"Your XP is now {player.Xp} and your Energy is {player.Energy}");
+
+
+
                     player.CheckXP();
+
+
+
                     Setup.Setup.enemyList.Clear();
                     break;
                 }
@@ -86,7 +93,20 @@ namespace Game.Mechanics
                     string choice = Console.ReadLine();
                     if (choice.ToUpper() == "Y")
                     {
-                        player.LoadGame();
+                        if (player.Level >= 3 && player.Level <= 4)
+                        {
+                            player = new Player(Setup.Setup.listOfSavedGames[0]);
+
+                        }
+                        else if (player.Level >= 5 && player.Level <=6)
+                        {
+                            player = new Player(Setup.Setup.listOfSavedGames[1]);
+                        }
+                        else if (player.Level >=7)
+                        {
+                            player = new Player(Setup.Setup.listOfSavedGames[2]);
+                        }
+
                     }
 
                     else if (choice.ToUpper() == "N")

@@ -13,7 +13,7 @@ namespace Game.Character
 
 
         private string name;
-        private int level = 7;
+        private int level = 1;
 
         private int xp = 0;
         private int hp = 100;
@@ -36,6 +36,28 @@ namespace Game.Character
 
         }
 
+        public Player(SaveGame saveGame)
+        {
+            this.name = saveGame.SavedName;
+            this.level = saveGame.SavedLevel;
+            this.xp = saveGame.SavedXp;
+            this.hp = saveGame.SavedHp;
+            this.maxHp = saveGame.SavedMaxHp;
+            this.energy = saveGame.SavedEnergy;
+            this.attack = saveGame.SavedAttack;
+            this.xpUntilNextLevel = saveGame.SavedXpUntilNextLevel;
+            this.vial = saveGame.SavedVial;
+
+            this.hearing = saveGame.SavedHearing;
+            this.vision = saveGame.SavedVision;
+            this.taste = saveGame.SavedTaste;
+            this.smell = saveGame.SavedSmell;
+
+            this.dead = saveGame.SavedDead;
+            this.awake = saveGame.SavedAwake;
+        }
+
+        
 
         public string Name { get => name; set => name = value; }
         public int Level { get => level; set => level = value; }
@@ -55,6 +77,7 @@ namespace Game.Character
 
         public bool Dead { get => dead; set => dead = value; }
         public bool Awake { get => awake; set => awake = value; }
+        
 
         public int PlayerAttack()
         {
@@ -142,15 +165,18 @@ namespace Game.Character
         {
             if (xp >= xpUntilNextLevel)
             {
-                Mechanics.Level.LevelUp(Battle.player);
+                Mechanics.Level.LevelUp(this);
             }
         }
 
-        public void LoadGame()
-        {
-            Battle.player.Name = SaveGame.
-        }
+        
 
+        public void Plus()
+        {
+            this.Hp=1;
+            
+        
+        }
 
     }
 }

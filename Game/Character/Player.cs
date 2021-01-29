@@ -20,13 +20,13 @@ namespace Game.Character
         private int maxHp = 100;
         private int energy = 0;
         private int attack = 1;
-        private int xpUntilNextLevel = 10;
-        private int vial = 10;
+        private int xpUntilNextLevel = 20;
+        private int vial = 0;
 
-        private int hearing = 1;
-        private int vision = 1;
-        private bool taste = true;
-        private bool smell = true;
+        private int hearing = 0;
+        private int vision = 0;
+        private bool taste = false;
+        private bool smell = false;
 
         private bool dead = false;
         private bool awake = false;
@@ -82,12 +82,12 @@ namespace Game.Character
         public int PlayerAttack()
         {
 
-            int attackDamage = 0;
+            int attackDamage = Battle.player.Attack;
             attackDamage += Attack;
             attackDamage += Vision;
 
 
-            int randomizedAttack = Setup.Setup.random.Next(0, 20);
+            int randomizedAttack = Setup.Setup.random.Next(0, 10);
 
 
             attackDamage *= randomizedAttack;
@@ -126,7 +126,7 @@ namespace Game.Character
         }
 
 
-
+        
         public static void ShowInfo(Player player)
         {
             Console.WriteLine($"Name: {player.Name}");
@@ -134,6 +134,7 @@ namespace Game.Character
             Console.WriteLine($"XP: {player.Xp}");
             Console.WriteLine($"HP: {player.Hp}");
             Console.WriteLine($"Energy: {player.Energy}");
+            Console.WriteLine($"Vials: {player.Vial}");
             if (player.Hearing == 0)
             {
                 Console.WriteLine("You are deaf");
@@ -159,6 +160,7 @@ namespace Game.Character
             {
                 Console.WriteLine("You have the sense of smell");
             }
+            Setup.Setup.ContinueAndClear();
         }
 
         public void CheckXP()
@@ -171,12 +173,7 @@ namespace Game.Character
 
         
 
-        public void Plus()
-        {
-            this.Hp=1;
-            
         
-        }
 
     }
 }

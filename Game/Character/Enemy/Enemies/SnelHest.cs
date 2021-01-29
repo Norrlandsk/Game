@@ -4,13 +4,13 @@ using System.Text;
 
 namespace Game.Character.Enemy.Enemies
 {
-    class MaliciousGhost : Enemy
+    class SnelHest : Enemy
     {
 
         //Constructor
-        public MaliciousGhost()
+        public SnelHest()
         {
-            base.Name = "malicious ghost";
+            base.Name = "snel hest";
             base.Level = 4;
 
             base.Xp = 30;

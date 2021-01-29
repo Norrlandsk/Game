@@ -4,19 +4,19 @@ using System.Text;
 
 namespace Game.Character.Enemy.Enemies
 {
-    class MaliciousGhost : Enemy
+    class MakerOfNightmares : Enemy
     {
 
         //Constructor
-        public MaliciousGhost()
+        public MakerOfNightmares()
         {
-            base.Name = "malicious ghost";
-            base.Level = 4;
+            base.Name = "Maker Of Nightmares";
+            base.Level = 9;
 
-            base.Xp = 30;
-            base.Hp = 30;
-            base.Energy = 30;
-            base.Attack = 10;
+            base.Xp = 80;
+            base.Hp = 80;
+            base.Energy = 80;
+            base.Attack = 30;
             base.Dead = false;
         }
 
@@ -41,7 +41,7 @@ namespace Game.Character.Enemy.Enemies
         public override void Message()
         {
             base.Message();
-            Console.Write("a ");
+            Console.Write("The ");
             Console.Write(base.GetName());
         }
 

@@ -24,28 +24,36 @@ namespace Game.Mechanics
             if (randomMessage < 4)
             {
                 Console.WriteLine("You stumble around aimlessly, trying to figure out what is happening");
-
+                Setup.Setup.ContinueAndClear();
             }
             else
             {
 
-
-                Setup.Setup.enemyList=Setup.Setup.SetupEnemyList(player);
-                int randomizedEnemy = Setup.Setup.random.Next(Setup.Setup.enemyList.Count);
-                StartBattle(Setup.Setup.enemyList[randomizedEnemy]);
+                if (player.Level < 9)
+                {
+                    Setup.Setup.enemyList = Setup.Setup.SetupEnemyList(player);
+                    int randomizedEnemy = Setup.Setup.random.Next(Setup.Setup.enemyList.Count);
+                    StartBattle(Setup.Setup.enemyList[randomizedEnemy]);
+                }
+                else
+                {
+                    MakerOfNightmares makerOfNightmares = new MakerOfNightmares();
+                    Console.WriteLine("You meet The Maker Of Nightmares! A vicious battle begins!");
+                    StartBattle(makerOfNightmares);
+                }
             }
         }
         private static void StartBattle(IEnemy enemy)
         {
             enemy.Message();
 
-            while (!enemy.IsDead() || !player.IsDead())
+            while (!enemy.IsDead() && !player.IsDead())
             {
 
                 int enemyDmg = player.PlayerAttack();
                 enemy.TakeDamage(enemyDmg);
-                Console.WriteLine($"You hit the {enemy.GetName()}, causing {enemyDmg} damage");
-                Console.WriteLine($"The enemy has {enemy.GetHP()} hp");
+                Console.WriteLine($"\nYou hit the {enemy.GetName()}, causing {enemyDmg} damage");
+                Console.WriteLine($"The enemy has {enemy.GetHP()} HP");
                 Console.ReadLine();
 
                 if (enemy.IsDead())
@@ -76,52 +84,61 @@ namespace Game.Mechanics
 
 
                     Setup.Setup.enemyList.Clear();
+                    Setup.Setup.ContinueAndClear();
                     break;
                 }
 
                 int enemyAttack = enemy.EnemyAttack();
                 player.TakeDamage(enemyAttack);
                 Console.WriteLine($"The {enemy.GetName()} strikes you, causing {enemyAttack} damage");
-
+                Console.WriteLine($"You have {player.Hp} HP");
+                Console.ReadLine();
                 if (player.IsDead())
                 {
 
                     Console.WriteLine("You have died in this nightmare and are forever bound to roam the Void!");
-                    Console.WriteLine("Would you like to restart from your last save point (y), or accept your fate (n)? (y/n)");
 
-                    
-                    string choice = Console.ReadLine();
-                    if (choice.ToUpper() == "Y")
+                    if (player.Level >= 3)
                     {
-                        if (player.Level >= 3 && player.Level <= 4)
+                        Console.WriteLine("Would you like to restart from your last save point (y), or accept your fate (n)? (y/n)");
+
+
+                        string choice = Console.ReadLine();
+                        if (choice.ToUpper() == "Y")
                         {
-                            player = new Player(Setup.Setup.listOfSavedGames[0]);
+                            if (player.Level >= 3 && player.Level <= 4)
+                            {
+                                player = new Player(Setup.Setup.listOfSavedGames[0]);
+
+                            }
+                            else if (player.Level >= 5 && player.Level <= 6)
+                            {
+                                player = new Player(Setup.Setup.listOfSavedGames[1]);
+                            }
+                            else if (player.Level >= 7)
+                            {
+                                player = new Player(Setup.Setup.listOfSavedGames[2]);
+                            }
+                            Console.Clear();
+                            break;
+                        }
+
+                        else if (choice.ToUpper() == "N")
+                        {
+                            Setup.Setup.isRunning = false;
 
                         }
-                        else if (player.Level >= 5 && player.Level <=6)
-                        {
-                            player = new Player(Setup.Setup.listOfSavedGames[1]);
-                        }
-                        else if (player.Level >=7)
-                        {
-                            player = new Player(Setup.Setup.listOfSavedGames[2]);
-                        }
-
                     }
-
-                    else if (choice.ToUpper() == "N")
+                    else
                     {
-                    Setup.Setup.isRunning = false;
-
+                        Setup.Setup.isRunning = false;
+                        break;
                     }
-
 
                     
                 }
 
-                Console.WriteLine($"Your HP is now {player.Hp}");
-
-                Console.ReadLine();
+                
             }
         }
 

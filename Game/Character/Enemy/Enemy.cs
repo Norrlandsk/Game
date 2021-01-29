@@ -52,22 +52,29 @@ namespace Game.Character.Enemy
 
         public virtual void Message()
         {
-            Console.Write($"In the void, suddenly you come upon ");
+            Console.Write($"In the Void, suddenly you come upon ");
         }
 
         public virtual int EnemyAttack()
         {
 
+            if (Battle.player.Hearing > 0)
+            {
+                for (int i = 0; i < Battle.player.Hearing; i++)
+                {
+                    this.Attack--;
+                    if (this.Attack < 1)
+                    {
+                        break;
+                    }
+                }
+            }
             int attackDamage = 0;
             attackDamage += Attack;
 
-            if (Battle.player.Hearing > 0)
-            {
 
-            }
-
-            //Tweaka
-            int randomAttackDamage = Setup.Setup.random.Next(2, 3);
+            
+            int randomAttackDamage = Setup.Setup.random.Next(0, 3);
 
             attackDamage *= randomAttackDamage;
 

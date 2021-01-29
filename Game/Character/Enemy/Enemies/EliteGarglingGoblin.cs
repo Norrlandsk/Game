@@ -4,19 +4,19 @@ using System.Text;
 
 namespace Game.Character.Enemy.Enemies
 {
-    class MaliciousGhost : Enemy
+    class EliteGarglingGoblin : Enemy
     {
 
         //Constructor
-        public MaliciousGhost()
+        public EliteGarglingGoblin()
         {
-            base.Name = "malicious ghost";
-            base.Level = 4;
+            base.Name = "elite gargling goblin";
+            base.Level = 8;
 
-            base.Xp = 30;
-            base.Hp = 30;
-            base.Energy = 30;
-            base.Attack = 10;
+            base.Xp = 70;
+            base.Hp = 70;
+            base.Energy = 70;
+            base.Attack = 30;
             base.Dead = false;
         }
 
@@ -41,7 +41,7 @@ namespace Game.Character.Enemy.Enemies
         public override void Message()
         {
             base.Message();
-            Console.Write("a ");
+            Console.Write("an ");
             Console.Write(base.GetName());
         }
 

@@ -4,19 +4,19 @@ using System.Text;
 
 namespace Game.Character.Enemy.Enemies
 {
-    class MaliciousGhost : Enemy
+    class OompaLoompa : Enemy
     {
 
         //Constructor
-        public MaliciousGhost()
+        public OompaLoompa()
         {
-            base.Name = "malicious ghost";
-            base.Level = 4;
+            base.Name = "oompa loompa";
+            base.Level = 5;
 
-            base.Xp = 30;
-            base.Hp = 30;
-            base.Energy = 30;
-            base.Attack = 10;
+            base.Xp = 40;
+            base.Hp = 40;
+            base.Energy = 40;
+            base.Attack = 15;
             base.Dead = false;
         }
 
@@ -41,7 +41,7 @@ namespace Game.Character.Enemy.Enemies
         public override void Message()
         {
             base.Message();
-            Console.Write("a ");
+            Console.Write("an ");
             Console.Write(base.GetName());
         }
 
